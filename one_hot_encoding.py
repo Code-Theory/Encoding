@@ -8,7 +8,12 @@ cat_columns = [column for column in data.columns if data[column].dtype == 'objec
 print("\nBefore one-hot encoding:\n")
 print(data[cat_columns])
 
+
+    
 data_encoded = pd.get_dummies(data, columns=cat_columns, prefix=cat_columns)
+
+data_encoded = data_encoded.replace({True: 1, False: 0})
 
 print("\nAfter one-hot encoding:\n")
 print(data_encoded)
+
